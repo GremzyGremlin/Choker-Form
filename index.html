@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dynamic Header</title>
+  <title>Solid Header Demo</title>
   <style>
-    /* Basic Reset */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -16,32 +15,33 @@
       background-color: #222;
       color: white;
       font-family: sans-serif;
-      padding-top: 120px; /* offset for fixed header */
+      padding-top: 100px; /* make space for fixed header */
     }
 
-    /* Header Styling */
+    /* Fixed Header */
     .header {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
-      background-color: #222;
-      transition: transform 0.3s ease;
+      background-color: #333;
       z-index: 1000;
+      transition: transform 0.3s ease;
     }
 
     .header.hidden {
       transform: translateY(-100%);
     }
 
+    /* Title Block */
     .header-title {
+      background-color: #333;
       padding: 1rem;
-      font-size: 1.5rem;
       text-align: center;
-      background-color: #222;
-      border-bottom: 1px solid #444;
+      font-size: 1.8rem;
+      font-weight: bold;
     }
 
+    /* Navigation Bar */
     nav {
       background-color: #444;
       display: flex;
@@ -54,22 +54,45 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.2s ease;
     }
 
     nav a:hover {
-      color: #ccc;
+      color: #aaa;
     }
 
-    /* Example Content */
+    /* Example content */
     .content {
+      padding: 2rem;
       max-width: 800px;
       margin: 0 auto;
-      padding: 2rem;
-      line-height: 1.6;
     }
   </style>
 </head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-title">Placeholder Title</div>
+    <nav>
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+      <a href="#">Link 4</a>
+    </nav>
+  </header>
+
+  <div class="content">
+    <p>Scroll down and the header will hide. Scroll back up and it will return.</p>
+    <p style="height: 1500px;">More content here...</p>
+  </div>
+
+  <script>
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY || document.documentElement.scrollTop
+
+  
 <body>
 
   <header class="header" id="header">
