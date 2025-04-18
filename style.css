@@ -40,6 +40,7 @@ nav {
   justify-content: center;
   gap: 2rem;
   padding: 0.75rem 1rem;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
 nav a {
@@ -52,24 +53,53 @@ nav a:hover {
   color: #ccc;
 }
 
-/* === Form Container === */
-.form-container {
+/* === Mobile Menu === */
+.navbar-toggle {
+  display: none; /* Hidden by default on larger screens */
   background-color: #444;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  width: 90%;
-  max-width: 1000px;
-  margin: 120px auto 2rem auto;
-  padding: 1rem;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Ensures page is scrollable */
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
 }
 
-iframe {
-  flex: 1;
-  width: 100%;
-  min-height: 800px;
-  border: none;
+.navbar-menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar-menu.mobile {
+  display: none; /* Hide menu links by default on mobile */
+  flex-direction: column; /* Stack links vertically on mobile */
+}
+
+.navbar-menu.mobile.active {
+  display: flex; /* Show when 'active' class is added */
+}
+
+/* === Media Queries for Mobile === */
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-between;
+  }
+
+  .navbar-toggle {
+    display: block; /* Show toggle button on smaller screens */
+  }
+
+  .navbar-menu {
+    display: none; /* Hide menu by default */
+    flex-direction: column; /* Stack menu items vertically */
+    width: 100%; /* Take full width */
+  }
+
+  .navbar-menu.active {
+    display: flex; /* Show when the menu is active */
+  }
+
+  nav a {
+    padding: 1rem;
+    border-top: 1px solid #555; /* Add divider between items */
+  }
 }
