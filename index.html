@@ -3,6 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Header</title>
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #222;
+      color: white;
+      font-family: sans-serif;
+      padding-top: 120px; /* offset for fixed header */
+    }
+
+    /* Header Styling */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #222;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .header.hidden {
+      transform: translateY(-100%);
+    }
+
+    .header-title {
+      padding: 1rem;
+      font-size: 1.5rem;
+      text-align: center;
+      background-color: #222;
+      border-bottom: 1px solid #444;
+    }
+
+    nav {
+      background-color: #444;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.75rem 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #ccc;
+    }
+
+    /* Example Content */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-title">My Website</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Projects</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <div class="content">
+    <p>Scroll down to hide the header, and scroll up to reveal it again.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula, lorem nec dignissim fermentum, orci augue sagittis lacus, vitae porttitor orci lorem a neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed tincidunt sapien ut est lacinia volutpat. Integer nec dolor eu justo porttitor feugiat. Curabitur non tincidunt arcu.</p>
+    <p style="height: 1500px;"></p>
+  </div>
+
+  <script>
+    // Header hide/show on scroll
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop) {
+        // Scrolling down
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Full-Height Google Form</title>
   <style>
     html, body {
