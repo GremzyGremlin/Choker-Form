@@ -9,49 +9,50 @@
   
 <body>
 
-  <!-- Header -->
-  <header class="header" id="header">
-    <div class="header-title">Gremlin Accessories</div>
-    <nav>
-      <a href="https://gremlinaccessories.com/">Home</a>
-      <a href="https://shop.gremlinaccessories.com/">Shop</a>
-      <a href="https://gremlinaccessories.com/services">Order Custom</a>
-      <a href="https://gremlinaccessories.com/Gallery">Gallery</a>
-      <a href="https://gremlinaccessories.com/FAQ">FAQ</a>
-      <a href="https://gremlinaccessories.com/Contact">Contact</a>
-    </nav>
-  </header>
+ <header class="header" id="header">
+  <div class="header-title">My Site Title</div>
+  
+  <!-- Hamburger Menu Button -->
+  <button class="navbar-toggle" id="navbar-toggle">&#9776;</button>
+  
+  <!-- Navigation Links -->
+  <nav>
+    <div class="navbar-menu" id="navbar-menu">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+      <a href="#">Link 4</a>
+    </div>
+  </nav>
+</header>
 
-  <!-- Form Content -->
-  <div class="form-container">
-    <!-- Replace with your own Google Form embed link -->
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdNUU3DXHqWGtE8vXbP1Bi-fUmjLZH6nQI6rCrVwUDoq49U8g/viewform?embedded=true" 
-      allowfullscreen>
-      Loading…
-    </iframe>
-  </div>
+<!-- Scroll Logic (for hiding header) -->
+<script>
+  let lastScrollTop = 0;
+  const header = document.getElementById('header');
+  const threshold = 10;
 
-  <!-- Scroll Logic -->
-  <script>
-    let lastScrollTop = 0;
-    const header = document.getElementById('header');
-    const threshold = 10;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (Math.abs(currentScroll - lastScrollTop) <= threshold) return;
 
-      if (Math.abs(currentScroll - lastScrollTop) <= threshold) return;
+    if (currentScroll > lastScrollTop) {
+      header.classList.add('hidden'); // scrolling down
+    } else {
+      header.classList.remove('hidden'); // scrolling up
+    }
 
-      if (currentScroll > lastScrollTop) {
-        header.classList.add('hidden'); // Scroll down
-      } else {
-        header.classList.remove('hidden'); // Scroll up
-      }
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  });
 
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    });
-  </script>
+  // Hamburger menu toggle functionality
+  const toggleButton = document.getElementById('navbar-toggle');
+  const menu = document.getElementById('navbar-menu');
 
+  toggleButton.addEventListener('click', () => {
+    menu.classList.toggle('active'); // Toggle visibility of the mobile menu
+  });
+</script>
 </body>
 </html>
